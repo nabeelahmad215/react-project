@@ -4,7 +4,8 @@ const Header = () => {
     return (
         <>
             <Home />
-            <div class="box"></div>
+            {/* <div class="box"></div> */}
+            <h1 class="my">Dashboard</h1>
         </>
     );
 }

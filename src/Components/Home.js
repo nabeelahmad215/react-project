@@ -51,8 +51,8 @@ const Home =() =>{
                             <i class='bx bxs-chevron-down arrow' onClick={Arrow}></i>
                         </div>
                         <ul class="sub-menu">
-                            <li><a class="link_name" href="#">Employee</a></li>
-                            <li><a href="#">Employee Information</a></li>
+                            {/* <li class="link_name">Employee</li> */}
+                            <li><Link to="/employee-info">Employee Information</Link></li>
                             <li><a href="#">Complaint</a></li>
                             <li><a href="#">Promotion</a></li>
                             <li><a href="#">Warning</a></li>
