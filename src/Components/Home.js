@@ -1,5 +1,5 @@
 import React from 'react';
-import './Main.css';
+import '../Components/css/Main.css';
 import { Arrow, Sidebar } from './Common';
 import { Link } from 'react-router-dom';
 
@@ -7,9 +7,14 @@ const Home =() =>{
     return (
         <>
             <div class="sidebar close">
+            {/* <div class="home-section">
+                <div class="home-content">
+                    <i class='bx bx-menu' onClick={Sidebar}></i>
+                </div>
+            </div> */}
                 <div class="logo-details">
-                    <i class='bx bxl-redbubble'></i>
-                    <span class="logo_name">Retrobuzz</span>
+                <i class='bx bx-menu' onClick={Sidebar}></i>
+                    {/* <span class="logo_name">Retrobuzz</span> */}
                 </div>
                 <ul class="nav-links">
                     <li>
@@ -108,12 +113,6 @@ const Home =() =>{
                     </li>
                 </ul>
             </div>
-            <section class="home-section">
-                <div class="home-content">
-                    <i class='bx bx-menu' onClick={Sidebar}></i>
-                    <span class="text">WELCOME | Username</span>
-                </div>
-            </section>
         </>
 
 
