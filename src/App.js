@@ -1,14 +1,9 @@
 import React from 'react';
 
 const App = () => {
-
-
   return (
     <>
       <div>
-
-
-
         <nav class="navbar navbar-expand-md">
           <div class="container-fluid mx-2">
             <div class="navbar-header">
