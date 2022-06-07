@@ -1,17 +1,16 @@
 
 import { useEffect, useState } from 'react';
-import { Link, Navigate, useHistory } from 'react-router-dom';
+import { Link, useNavigate, useHistory} from 'react-router-dom';
 
 function Signup() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     async function signUp() {
-        let item = { email, password }
+        const item = { email, password }
         console.warn(email, password)
 
-
-        let result = await fetch("http://localhost:8000/api/register", {
+        const result = await fetch("http://localhost:8000/api/register", {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
@@ -23,6 +22,8 @@ function Signup() {
         localStorage.setItem("user-info", JSON.stringify(result))
 
     }
+    
+
 
     return (
         <>
