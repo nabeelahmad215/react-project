@@ -12,3 +12,5 @@ export const PostCall = (url,data,cb) => {
         cb(result);
     })
 }
+
+ 
