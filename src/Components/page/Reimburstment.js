@@ -1,10 +1,9 @@
 import '../css/reimb.css';
 
-
 const Reimburstment = () => {
-    return(
-        <>
-              <div>
+  return (
+    <>
+      <div>
         <nav class="navbar navbar-expand-md">
           <div class="container-fluid mx-2">
             <div class="navbar-header">
@@ -33,41 +32,45 @@ const Reimburstment = () => {
         <div class="p-4">
           <div class="welcome">
             <div class="content rounded-3 p-2">
-              <h1 class="fs-5">Module Name / Reimburstment</h1>
+              <h1 class="fs-5">Payroll / Reimburstment</h1>
             </div>
           </div>
         </div>
         <div class="p-4">
           <div class="welcome">
             <div class="content rounded-3 p-2">
-            <table className='mytable'>
+              <table className='mytable'>
                 <tr>
-                    <td><label>Doc Date</label></td>
-                    <td><label>Employee Name</label></td>
-                    <td><label>Category</label></td>
-                    <td><label>Amount</label></td>
+                  <td><label>Doc Date</label></td>
+                  <td><label>Employee Name</label></td>
+                  <td><label>Category</label></td>
+                  <td><label>Amount</label></td>
 
                 </tr>
                 <tr>
-                    <td><input type="text" className='mytdinput'/></td>
-                    <td><input type="text" className='mytdinput'/></td>
-                    <td><input type="text" className='mytdinput'/></td>
-                    <td><input type="text" className='mytdinput'/></td>
-                    
+                  <td><input type="text" className='mytdinput' /></td>
+                  <td><input type="text" className='mytdinput' /></td>
+                  <td><input type="text" className='mytdinput' /></td>
+                  <td><input type="text" className='mytdinput' /></td>
+
                 </tr>
                 <tr>
-                <td><label>Detail</label></td>
+                  <td><label>Detail</label></td>
                 </tr>
                 <tr>
-                <td colSpan='4'><textarea type="detail" rows="4" cols="135"/></td>
+                  <td colSpan='4'><textarea type="detail" rows="4" cols="148" className='textarea' /></td>
                 </tr>
-            </table>
+              </table>
             </div>
           </div>
-        </div> 
+        </div>
+        <div class="myfooter">
+          <button class="button button2">SAVE</button>
+          <button class="button button1">HISTORY</button>
+        </div>
       </div>
-        </>
-    )
+    </>
+  )
 }
 
 export default Reimburstment;

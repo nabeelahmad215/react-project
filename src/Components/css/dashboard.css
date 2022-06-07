@@ -158,6 +158,8 @@ body {
 -------------------------------- */
 .welcome {
 	color: black;
+	border: solid;
+    border-radius: 6px;
 }
 
 .welcome .content {

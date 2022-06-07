@@ -1,26 +1,17 @@
 
 import { useEffect, useState } from 'react';
 import { Link, useNavigate, useHistory} from 'react-router-dom';
+import { PostCall } from './PostCall';
 
 function Signup() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    async function signUp() {
-        const item = { email, password }
-        console.warn(email, password)
-
-        const result = await fetch("http://localhost:8000/api/register", {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": 'application/json'
-            },
-            body: JSON.stringify(item)
+    const handleSubmit =(e)=>{
+        e.preventDefault();
+        PostCall('register',{email:email,password:password}, function(result){
+            console.log(result);
         });
-        result = await result.json();
-        localStorage.setItem("user-info", JSON.stringify(result))
-
     }
     
 
@@ -29,6 +20,7 @@ function Signup() {
         <>
             <div className="login">
                 <h1>Login</h1>
+                <form onSubmit={handleSubmit}>
                 <input type="text" name="company" placeholder="Company Name" />
                 <input type="text" name="mobile" placeholder="03001234567" />
                 <input type="text" name="cnic" placeholder="CNIC (without dashes)" />
@@ -36,7 +28,8 @@ function Signup() {
                     onChange={(e) => (setEmail(e.target.value))} />
                 <input type="password" name="password" placeholder="Password" required="required" value={password}
                     onChange={(e) => (setPassword(e.target.value))} />
-                <Link to="/login"><button onClick={signUp} class="btn btn-primary btn-block btn-large">Let me in.</button></Link>
+                <button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>
+                </form>
             </div>
         </>
     );
