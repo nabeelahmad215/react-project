@@ -1,28 +1,21 @@
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { PostCall } from './PostCall';
 
 function Signup() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    // useEffect(() => {
-    //     if (localStorage.getItem('user-info')) {
 
-    //     }
-    // }, [])
     const nav = useNavigate();
     const handleSubmit =(e)=>{
         e.preventDefault();
         PostCall('register',{email:email,password:password}, function(result){
             console.log(result);
             nav("/login");
-            // localStorage.setItem("user-info", JSON.stringify(result));
         });
     }
     
-
-
     return (
         <>
             <div className="login">
