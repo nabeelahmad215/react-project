@@ -1,7 +1,7 @@
 import '../css/reimb.css';
 import PayrollLayout from './PayrollLayout';
 
-const Reimburstment = () => {
+const Salary = () => {
   return (
     <>
       <div>
@@ -9,7 +9,7 @@ const Reimburstment = () => {
         <div class="p-4">
           <div class="welcome">
             <div class="content rounded-3 p-2">
-              <h1 class="fs-5">Payroll / Reimburstment</h1>
+              <h1 class="fs-5">Payroll / Salary Sheet</h1>
             </div>
           </div>
         </div>
@@ -46,4 +46,4 @@ const Reimburstment = () => {
   )
 }
 
-export default Reimburstment;
+export default Salary;
