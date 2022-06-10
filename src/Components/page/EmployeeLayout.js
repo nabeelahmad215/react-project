@@ -16,6 +16,11 @@ const EmployeeLayout = () => {
                                     </a>
                                 </li>
                                 <li>
+                                    <Link to="/employee-dashboard" class="nav-link" role="button" aria-expanded="false">
+                                        Dashboard
+                                    </Link>
+                                </li>
+                                <li>
                                     <Link to="/info" class="nav-link" role="button" aria-expanded="false">
                                         Employee Information
                                     </Link>
@@ -28,6 +33,11 @@ const EmployeeLayout = () => {
                                 <li>
                                     <Link to="/resignation" class="nav-link" role="button" aria-expanded="false">
                                         Resignation
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/user-list" class="nav-link" role="button" aria-expanded="false">
+                                        Users List
                                     </Link>
                                 </li>
                             </ul>

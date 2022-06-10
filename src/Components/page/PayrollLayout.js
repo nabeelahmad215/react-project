@@ -16,6 +16,11 @@ const PayrollLayout = () => {
                                     </a>
                                 </li>
                                 <li>
+                                    <Link to="/payroll-dashboard" class="nav-link" role="button" aria-expanded="false">
+                                        Dashboard
+                                    </Link>
+                                </li>
+                                <li>
                                     <Link to="/salary-sheet" class="nav-link" role="button" aria-expanded="false">
                                         Salary Sheet
                                     </Link>

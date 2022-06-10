@@ -13,7 +13,42 @@ const Promotion = () => {
                         </div>
                     </div>
                 </div>
-                {/* body */}
+                <div class="p-4">
+                    <div class="welcome">
+                        <div class="content rounded-3 p-2">
+                            <table className='mytable'>
+                                <tr>
+                                    <td><label>Doc No.</label></td>
+                                    <td><label>Promotion Date</label></td>
+                                    <td><label>Employee Name</label></td>
+                                    <td><label>Promoted From</label></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="text" className='mytdinput' /></td>
+                                    <td><input type="date" className='mytdinput' /></td>
+                                    <td><input type="text" className='mytdinput' /></td>
+                                    <td><input type="text" className='mytdinput' /></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Promoted To</label></td>
+                                    <td><label>Current Salary</label></td>
+                                    <td><label>Promoted Salary</label></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="text" className='mytdinput' /></td>
+                                    <td><input type="text" className='mytdinput' /></td>
+                                    <td><input type="text" className='mytdinput' /></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Detail</label></td>
+                                </tr>
+                                <tr>
+                                    <td colSpan='4'><textarea type="detail" rows="4" cols="148" className='textarea' /></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </>
     )

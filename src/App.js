@@ -9,6 +9,7 @@ import Reimburstment from './Components/page/Reimburstment';
 import Resignation from './Components/page/Resignation';
 import Salary from './Components/page/Salary';
 import Signup from './Components/page/Signup';
+import UserList from './Components/page/UserList';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
       <Route path='/info' element={<Information />} />
       <Route path='/promotion' element={<Promotion />} />
       <Route path='/resignation' element={<Resignation />} />
+      <Route path='/user-list' element={<UserList />} />
       <Route path='/salary-sheet' element={<Salary />} />
       <Route path='/payroll' element={<Payroll />} />
       <Route path='/reimburstment' element={<Reimburstment />} />
