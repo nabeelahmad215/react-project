@@ -35,11 +35,6 @@ const EmployeeLayout = () => {
                                         Resignation
                                     </Link>
                                 </li>
-                                <li>
-                                    <Link to="/user-list" class="nav-link" role="button" aria-expanded="false">
-                                        Users List
-                                    </Link>
-                                </li>
                             </ul>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggle-navbar" aria-controls="toggle-navbar" aria-expanded="false" aria-label="Toggle navigation">
                                 <i class="uil-bars text-white"></i>

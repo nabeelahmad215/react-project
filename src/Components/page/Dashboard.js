@@ -1,4 +1,5 @@
 import '../css/dashboard.css';
+import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
   return (
@@ -58,7 +59,7 @@ const Dashboard = () => {
                 </a>
               </div>
               <div class="col-lg-4">
-                <a href="#" class="linkstyle">
+                <Link to="/employee-dashboard" target="_blank" class="linkstyle">
                   <div class="box d-flex rounded-2 align-items-center mb-4 mb-lg-0 p-3">
                     <i class="uil-user fs-2 text-center bg-primary rounded-circle"></i>
                     <div class="ms-3">
@@ -67,7 +68,7 @@ const Dashboard = () => {
                       </div>
                     </div>
                   </div>
-                </a>
+                </Link>
               </div>
               <div class="col-lg-4">
                 <a href="#" class="linkstyle">
@@ -87,7 +88,7 @@ const Dashboard = () => {
           <section class="statistics mt-4">
             <div class="row">
               <div class="col-lg-4">
-                <a href="#" class="linkstyle">
+                <Link to="/payroll-dashboard" target="_blank" class="linkstyle">
                   <div class="box d-flex rounded-2 align-items-center mb-4 mb-lg-0 p-3">
                     <i class="uil-money-withdrawal fs-2 text-center bg-primary rounded-circle"></i>
                     <div class="ms-3">
@@ -96,10 +97,10 @@ const Dashboard = () => {
                       </div>
                     </div>
                   </div>
-                </a>
+                </Link>
               </div>
               <div class="col-lg-4">
-                <a href="#" class="linkstyle">
+                <Link to="/user-list" class="linkstyle" target="_blank">
                   <div class="box d-flex rounded-2 align-items-center mb-4 mb-lg-0 p-3">
                     <i class="uil-lock fs-2 text-center bg-primary rounded-circle"></i>
                     <div class="ms-3">
@@ -108,7 +109,7 @@ const Dashboard = () => {
                       </div>
                     </div>
                   </div>
-                </a>
+                </Link>
               </div>
             </div>
           </section>

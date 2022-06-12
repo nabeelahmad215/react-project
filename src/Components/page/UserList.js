@@ -1,7 +1,14 @@
+import { useState } from 'react';
 import '../css/inform.css';
 import EmployeeLayout from './EmployeeLayout';
+import Select from 'react-dropdown-select';
+import { GetCall } from './GetCall';
 
 const UserList = () => {
+    const [persons, setPersons] = useState([]);
+    const get = () => {
+        GetCall('dropdown', setPersons);
+    }
     return (
         <>
             <div>
@@ -26,12 +33,10 @@ const UserList = () => {
                                 <tr>
                                     <td><input type="date" className='mytdinput' /></td>
                                     <td>
-                                        <select className='mytdinput'>
-                                            <option>
-                                                EmployeeName
-                                            </option>
-                                        </select>
+                                        <Select key="email" values="email" options={persons['id']} className='mytdinput'/>
+
                                     </td>
+                                    <td><button type='submit' onClick={get}>Check</button></td>
                                     <td><input type="email" className='mytdinput' /></td>
                                     <td><input type="text" className='mytdinput' /></td>
                                 </tr>
