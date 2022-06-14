@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import Dashboard from './Components/page/Dashboard';
 import EmployeeLayout from './Components/page/EmployeeLayout';
 import Information from './Components/page/Information';
+import LeaveLayout from './Components/page/LeaveLayout';
 import Login from './Components/page/Login';
 import Payroll from './Components/page/Payroll';
 import PayrollLayout from './Components/page/PayrollLayout';
@@ -19,6 +20,7 @@ const App = () => {
       <Route index element={<Dashboard />} />
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element={<Signup />} />
+      <Route path='/leave-layout' element={<LeaveLayout />} />
       <Route path='/employee-dashboard' element={<EmployeeLayout />} />
       <Route path='/info' element={<Information />} />
       <Route path='/promotion' element={<Promotion />} />

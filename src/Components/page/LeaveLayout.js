@@ -2,7 +2,8 @@ import '../css/dashboard.css';
 import { Link } from 'react-router-dom';
 import logo from '../img/logo.jpg';
 
-const EmployeeLayout = () => {
+const LeaveLayout = () => {
+    
     return (
         <>
             <div>
@@ -16,23 +17,23 @@ const EmployeeLayout = () => {
                                     </a>
                                 </li>
                                 <li>
-                                    <Link to="/employee-dashboard" class="nav-link" role="button" aria-expanded="false">
+                                    <Link to="/leave-dashboard" class="nav-link" role="button" aria-expanded="false">
                                         Dashboard
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="/info" class="nav-link" role="button" aria-expanded="false">
-                                        Employee Information
+                                    <Link to="/leave-request" class="nav-link" role="button" aria-expanded="false">
+                                        Leave Request
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="/promotion" class="nav-link" role="button" aria-expanded="false">
-                                        Promotion
+                                    <Link to="/leave-history" class="nav-link" role="button" aria-expanded="false">
+                                    Leave History
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="/resignation" class="nav-link" role="button" aria-expanded="false">
-                                        Resignation
+                                    <Link to="/leave-type" class="nav-link" role="button" aria-expanded="false">
+                                        Leave Type
                                     </Link>
                                 </li>
                             </ul>
@@ -44,7 +45,7 @@ const EmployeeLayout = () => {
                             <ul class="navbar-nav">
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">
-                                        <i data-show="show-side-navigation1" class="uil-bars show-side-btn"></i>
+                                        <i data-show="show-side-navigation1" class="uil-sign-out-alt show-side-btn"></i>
                                     </a>
                                 </li>
                             </ul>
@@ -56,4 +57,4 @@ const EmployeeLayout = () => {
     )
 }
 
-export default EmployeeLayout;
+export default LeaveLayout;

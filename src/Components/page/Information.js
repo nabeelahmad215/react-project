@@ -1,7 +1,28 @@
 import '../css/inform.css';
+import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import { PostCall } from './PostCall';
 import EmployeeLayout from './EmployeeLayout';
+import Swal from 'sweetalert';
 
 const Information = () => {
+    const [emp_code, setEmpcode] = useState("");
+    const [name, setName] = useState("");
+    const [fname, setFname] = useState("");
+    const [gender, setGender] = useState("");
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        PostCall('emp-info', { emp_code: emp_code, name: name, fname: fname, gender: gender }, function (result) {
+            Swal({
+                icon: 'success',
+                title: 'Added!',
+                text: 'data has been Added.',
+                showConfirmButton: true
+            })
+        });
+    }
+
     return (
         <>
             <div>
@@ -16,7 +37,7 @@ const Information = () => {
                 <div class="p-4 mybox">
                     <div class="welcome">
                         <div class="content rounded-3 p-2">
-                            <form>
+                            <form onSubmit={handleSubmit}>
                                 <u><h3>Personal Information</h3></u>
                                 <table className='mytableinfo'>
                                     <tr>
@@ -26,11 +47,11 @@ const Information = () => {
                                         <td><label>Gender</label></td>
                                     </tr>
                                     <tr>
-                                        <td><input type="text" className='mytdinputinfo' /></td>
-                                        <td><input type="text" className='mytdinputinfo' /></td>
-                                        <td><input type="text" className='mytdinputinfo' /></td>
+                                        <td><input type="text" name="emp_code" className='mytdinputinfo' value={emp_code} onChange={(e) => (setEmpcode(e.target.value))} /></td>
+                                        <td><input type="text" name="name" className='mytdinputinfo' value={name} onChange={(e) => (setName(e.target.value))} /></td>
+                                        <td><input type="text" name="fname" className='mytdinputinfo' value={fname} onChange={(e) => (setFname(e.target.value))} /></td>
                                         <td>
-                                            <select className='mytdinputinfo'>
+                                            <select className='mytdinputinfo' name="gender" value={gender} onChange={(e) => (setGender(e.target.value))}>
                                                 <option>Gender</option>
                                                 <option>Male</option>
                                                 <option>Female</option>
@@ -132,7 +153,13 @@ const Information = () => {
                                         </td>
                                     </tr>
                                 </table>
+
+                                <div className='btnposition'>
+                                    <button type="submit" class="button button2">SAVE</button>
+                                    <button class="button button1">HISTORY</button>
+                                </div>
                             </form>
+
                         </div>
                     </div>
                 </div>
