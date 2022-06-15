@@ -89,3 +89,9 @@ body{
   .btnposition{
 	margin-top: 4%
   }
+
+  .error {
+	color:#db2269;
+	font-size: 1em;
+	display: relative;
+  }

@@ -1,5 +1,5 @@
 import '../css/inform.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { PostCall } from './PostCall';
 import EmployeeLayout from './EmployeeLayout';
@@ -7,20 +7,94 @@ import Swal from 'sweetalert';
 
 const Information = () => {
     const [emp_code, setEmpcode] = useState("");
+    const [empcodeErr, setEmpcodeErr] = useState(false);
     const [name, setName] = useState("");
+    const [nameErr, setNameErr] = useState(false);
     const [fname, setFname] = useState("");
+    const [fnameErr, setFnameErr] = useState(false);
     const [gender, setGender] = useState("");
+    const [genderErr, setGenderErr] = useState(false);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        PostCall('emp-info', { emp_code: emp_code, name: name, fname: fname, gender: gender }, function (result) {
+    function handleSubmit(e) {
+        if (emp_code.length === 0 || name.length === 0 || 
+            name.length < 5 ||fname.length === 0 || fname.length < 5 
+            || gender !== 'Male' || gender !== 'Female' ) {
             Swal({
-                icon: 'success',
-                title: 'Added!',
-                text: 'data has been Added.',
+                icon: 'warning',
+                title: 'WARNING!',
+                text: 'Non-Validated Data',
                 showConfirmButton: true
             })
-        });
+        }
+        else {
+            PostCall('emp-info', { emp_code: emp_code, name: name, fname: fname, gender: gender }, function (result) {
+                Swal({
+                    icon: 'success',
+                    title: 'Added!',
+                    text: 'data has been Added.',
+                    showConfirmButton: true
+                })
+            });
+        }
+
+        e.preventDefault()
+    }
+
+    function empCodeHandler(e) {
+        let item = e.target.value;
+        if (item.length === 0) {
+            setEmpcodeErr(false)
+        }
+        else if (item.length < 5) {
+            setEmpcodeErr(true)
+        }
+        else {
+            setEmpcodeErr(false)
+        }
+        setEmpcode(item)
+    }
+    function nameHandler(e) {
+        let item = e.target.value;
+        if (item.length === 0) {
+            setNameErr(false)
+        }
+        else if (item.length < 5) {
+            setNameErr(true)
+        }
+        else {
+            setNameErr(false)
+        }
+        setName(item)
+
+    }
+    function fnameHandler(e) {
+        let item = e.target.value;
+        if (item.length === 0) {
+            setFnameErr(false)
+        }
+        else if (item.length < 5) {
+            setFnameErr(true)
+        }
+        else {
+            setFnameErr(false)
+        }
+        setFname(item)
+
+    }
+
+    function genderHandler(e) {
+        let item = e.target.value;
+        if (item !== 'Gender') {
+            setGenderErr(false)
+        }
+        else if (item == 'Gender') {
+            setGenderErr(true)
+        }
+        else {
+            setGenderErr(false)
+        }
+        setGender(item)
+
     }
 
     return (
@@ -47,15 +121,25 @@ const Information = () => {
                                         <td><label>Gender</label></td>
                                     </tr>
                                     <tr>
-                                        <td><input type="text" name="emp_code" className='mytdinputinfo' value={emp_code} onChange={(e) => (setEmpcode(e.target.value))} /></td>
-                                        <td><input type="text" name="name" className='mytdinputinfo' value={name} onChange={(e) => (setName(e.target.value))} /></td>
-                                        <td><input type="text" name="fname" className='mytdinputinfo' value={fname} onChange={(e) => (setFname(e.target.value))} /></td>
                                         <td>
-                                            <select className='mytdinputinfo' name="gender" value={gender} onChange={(e) => (setGender(e.target.value))}>
+                                            <input type="text" name="emp_code" className='mytdinputinfo' value={emp_code} onChange={empCodeHandler} /><br/>
+                                            {empcodeErr ? <span className='error'>Employee Code must be at least 5 characters long!</span> : ""}
+                                        </td>
+                                        <td>
+                                            <input type="text" name="name" className='mytdinputinfo' value={name} onChange={nameHandler} />
+                                            {nameErr ? <span className='error'>Full Name must be at least 5 characters long!</span> : ""}
+                                            </td>
+                                        <td>
+                                            <input type="text" name="fname" className='mytdinputinfo' value={fname} onChange={fnameHandler} />
+                                            {fnameErr ? <span className='error'>User Not Valid</span> : ""}
+                                            </td>
+                                        <td>
+                                            <select className='mytdinputinfo' name="gender" value={gender} onChange={genderHandler}>
                                                 <option>Gender</option>
                                                 <option>Male</option>
                                                 <option>Female</option>
                                             </select>
+                                            {genderErr ? <span className='error'>Please select Gender</span> : ""}
                                         </td>
                                     </tr>
                                     <tr>
