@@ -1,0 +1,68 @@
+import '../css/dashboard.css';
+import { Link } from 'react-router-dom';
+import EmployeeLayout from './EmployeeLayout';
+import { useState, useEffect } from 'react';
+import '../css/table.css';
+
+const InfoHistory = () => {
+    const [email, setEmail] = useState([]);
+    useEffect(() => {
+        const getemail = async () => {
+            const resemail = await fetch("http://localhost:8000/api/dropdown");
+            const resem = await resemail.json();
+            setEmail(await resem);
+        }
+        getemail();
+    }, []);
+    return (
+        <>
+            <div>
+                <EmployeeLayout />
+                <div class="p-4">
+                    <div class="welcome">
+                        <div class="content rounded-3 p-2">
+                            <h1 class="fs-5">Employee / Employee Information History</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 mybox">
+                    <div class="welcome">
+                        <div class="content rounded-3 p-2">
+                            <table className="table table-striped">
+                                <thead>
+                                    <tr className='mytr'>
+                                        <th>Emp Code</th>
+                                        <th>Employee Name</th>
+                                        <th>Father/Husband</th>
+                                        <th>Gender</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr className='mytr'>
+                                        <td>1</td>
+                                        {
+                                           email.length > 0 ?
+                                                    email.map((row)=>{
+                                                        return(
+                                                            <tr><td>{row.email}</td></tr>
+                                                        )
+                                                    }
+                                                        
+                                                    ):
+                                                    <tr><td>No Record!</td></tr>
+                                        }
+
+                                        <td>Otto</td>
+                                        <td>@mdo</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    )
+}
+
+export default InfoHistory;

@@ -1,9 +1,9 @@
 import '../css/inform.css';
 import { useEffect, useState } from 'react';
-import { useNavigate } from "react-router-dom";
 import { PostCall } from './PostCall';
 import EmployeeLayout from './EmployeeLayout';
 import Swal from 'sweetalert';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Information = () => {
     const [emp_code, setEmpcode] = useState("");
@@ -15,6 +15,17 @@ const Information = () => {
     const [gender, setGender] = useState("");
     const [genderErr, setGenderErr] = useState(false);
 
+    const [email, setEmail] = useState([]);
+    useEffect( ()=>{
+        const getemail = async ()=>{
+            const resemail = await fetch("http://localhost:8000/api/dropdown");
+            const resem = await resemail.json();
+            setEmail(await resem);
+        }
+        getemail();
+    },[]);
+
+    const nav = useNavigate();
     function handleSubmit(e) {
         if (emp_code.length === 0 || name.length === 0 || 
             name.length < 5 ||fname.length === 0 || fname.length < 5 
@@ -34,6 +45,7 @@ const Information = () => {
                     text: 'data has been Added.',
                     showConfirmButton: true
                 })
+                nav("/info-history")
             });
         }
 
@@ -154,6 +166,11 @@ const Information = () => {
                                             <select className='mytdinputinfo'>
                                                 <option>Religion</option>
                                                 <option>Islam</option>
+                                                {
+                                                    email.map((getemail, index)=>(
+                                                        <option key={index} value={getemail.id}>{getemail.email}</option>
+                                                    ))
+                                                }
                                             </select>
                                         </td>
                                         <td>
@@ -240,7 +257,7 @@ const Information = () => {
 
                                 <div className='btnposition'>
                                     <button type="submit" class="button button2">SAVE</button>
-                                    <button class="button button1">HISTORY</button>
+                                    <Link to="/info-history"><button class="button button1">HISTORY</button></Link>
                                 </div>
                             </form>
 

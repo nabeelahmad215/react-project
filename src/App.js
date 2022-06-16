@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Dashboard from './Components/page/Dashboard';
 import EmployeeLayout from './Components/page/EmployeeLayout';
+import InfoHistory from './Components/page/InfoHistory';
 import Information from './Components/page/Information';
 import LeaveLayout from './Components/page/LeaveLayout';
 import Login from './Components/page/Login';
@@ -23,6 +24,7 @@ const App = () => {
       <Route path='/leave-layout' element={<LeaveLayout />} />
       <Route path='/employee-dashboard' element={<EmployeeLayout />} />
       <Route path='/info' element={<Information />} />
+      <Route path='/info-history' element={<InfoHistory />} />
       <Route path='/promotion' element={<Promotion />} />
       <Route path='/resignation' element={<Resignation />} />
       <Route path='/payroll-dashboard' element={<PayrollLayout />} />
