@@ -38,23 +38,17 @@ const InfoHistory = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr className='mytr'>
-                                        <td>1</td>
-                                        {
-                                           email.length > 0 ?
-                                                    email.map((row)=>{
-                                                        return(
-                                                            <tr><td>{row.email}</td></tr>
-                                                        )
-                                                    }
-                                                        
-                                                    ):
-                                                    <tr><td>No Record!</td></tr>
-                                        }
+                                    {
+                                        email.length > 0 ?
+                                            email.map((row) => {
+                                                return (
+                                                    <tr className='mytr'><td>{row.id}</td><td>{row.email}</td></tr>
+                                                )
+                                            }
 
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                    </tr>
+                                            ) :
+                                            <tr className='mytr'><td>No Record!</td></tr>
+                                    }
                                 </tbody>
                             </table>
                         </div>
