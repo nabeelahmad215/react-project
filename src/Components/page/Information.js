@@ -16,20 +16,20 @@ const Information = () => {
     const [genderErr, setGenderErr] = useState(false);
 
     const [email, setEmail] = useState([]);
-    useEffect( ()=>{
-        const getemail = async ()=>{
+    useEffect(() => {
+        const getemail = async () => {
             const resemail = await fetch("http://localhost:8000/api/dropdown");
             const resem = await resemail.json();
             setEmail(await resem);
         }
         getemail();
-    },[]);
+    }, []);
 
     const nav = useNavigate();
     function handleSubmit(e) {
-        if (emp_code.length === 0 || name.length === 0 || 
-            name.length < 5 ||fname.length === 0 || fname.length < 5 
-            || gender !== 'Male' || gender !== 'Female' ) {
+        if (emp_code.length === 0 || name.length === 0 ||
+            name.length < 5 || fname.length === 0 || fname.length < 5
+            || gender !== 'Male' || gender !== 'Female') {
             Swal({
                 icon: 'warning',
                 title: 'WARNING!',
@@ -49,7 +49,7 @@ const Information = () => {
             });
         }
 
-        e.preventDefault()
+        e.preventDefault();
     }
 
     function empCodeHandler(e) {
@@ -109,6 +109,14 @@ const Information = () => {
 
     }
 
+    const [num1, setNum1] = useState();
+    const [num2, setNum2] = useState();
+    const [total, setTotal] = useState();
+    let newval = num2 / 100;
+    function sum() {
+      setTotal(num1 - num1 * newval);
+    }
+
     return (
         <>
             <div>
@@ -134,17 +142,17 @@ const Information = () => {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input type="text" name="emp_code" className='mytdinputinfo' value={emp_code} onChange={empCodeHandler} /><br/>
+                                            <input type="text" name="emp_code" className='mytdinputinfo' value={emp_code} onChange={empCodeHandler} /><br />
                                             {empcodeErr ? <span className='error'>Employee Code must be at least 5 characters long!</span> : ""}
                                         </td>
                                         <td>
                                             <input type="text" name="name" className='mytdinputinfo' value={name} onChange={nameHandler} />
                                             {nameErr ? <span className='error'>Full Name must be at least 5 characters long!</span> : ""}
-                                            </td>
+                                        </td>
                                         <td>
                                             <input type="text" name="fname" className='mytdinputinfo' value={fname} onChange={fnameHandler} />
                                             {fnameErr ? <span className='error'>User Not Valid</span> : ""}
-                                            </td>
+                                        </td>
                                         <td>
                                             <select className='mytdinputinfo' name="gender" value={gender} onChange={genderHandler}>
                                                 <option>Gender</option>
@@ -167,7 +175,7 @@ const Information = () => {
                                                 <option>Religion</option>
                                                 <option>Islam</option>
                                                 {
-                                                    email.map((getemail, index)=>(
+                                                    email.map((getemail, index) => (
                                                         <option key={index} value={getemail.id}>{getemail.email}</option>
                                                     ))
                                                 }
@@ -214,9 +222,18 @@ const Information = () => {
                                         <td><label>Gross Salary</label></td>
                                     </tr>
                                     <tr>
-                                        <td><input type="text" className='mytdinputinfo' /></td>
-                                        <td><input type="number" className='mytdinputinfo' /></td>
-                                        <td><input type="text" className='mytdinputinfo' /></td>
+                                        <td>
+                                            <input type="text" className='mytdinputinfo' value={num1}
+                                                onChange={(event) => setNum1(+event.target.value)} />
+                                        </td>
+                                        <td>
+                                            <input type="number" className='mytdinputinfo' value={num2}
+                                                onChange={(event) => setNum2(+event.target.value)} />
+                                            <button type="button" onClick={sum}>Calculate</button>
+                                        </td>
+                                        <td>
+                                            <input type="text" className='mytdinputinfo' readOnly value={total} />
+                                        </td>
                                     </tr>
                                 </table>
                                 <u><h3 style={{ marginTop: 15 }}>Joining</h3></u>
