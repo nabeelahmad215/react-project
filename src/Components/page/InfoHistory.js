@@ -1,5 +1,4 @@
 import '../css/dashboard.css';
-import { Link } from 'react-router-dom';
 import EmployeeLayout from './EmployeeLayout';
 import { useState, useEffect } from 'react';
 import '../css/table.css';
@@ -8,12 +7,13 @@ const InfoHistory = () => {
     const [email, setEmail] = useState([]);
     useEffect(() => {
         const getemail = async () => {
-            const resemail = await fetch("http://localhost:8000/api/dropdown");
+            const resemail = await fetch("http://localhost:8000/api/empinfohistory");
             const resem = await resemail.json();
             setEmail(await resem);
         }
         getemail();
     }, []);
+
     return (
         <>
             <div>
@@ -35,6 +35,7 @@ const InfoHistory = () => {
                                         <th>Employee Name</th>
                                         <th>Father/Husband</th>
                                         <th>Gender</th>
+                                        <th>DOB</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -42,7 +43,13 @@ const InfoHistory = () => {
                                         email.length > 0 ?
                                             email.map((row) => {
                                                 return (
-                                                    <tr className='mytr'><td>{row.id}</td><td>{row.email}</td></tr>
+                                                    <tr className='mytr'>
+                                                        <td>{row.emp_code}</td>
+                                                        <td>{row.name}</td>
+                                                        <td>{row.fname}</td>
+                                                        <td>{row.gender}</td>
+                                                        <td>{row.dob}</td>
+                                                    </tr>
                                                 )
                                             }
 

@@ -7,13 +7,31 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const Information = () => {
     const [emp_code, setEmpcode] = useState("");
-    const [empcodeErr, setEmpcodeErr] = useState(false);
     const [name, setName] = useState("");
-    const [nameErr, setNameErr] = useState(false);
     const [fname, setFname] = useState("");
-    const [fnameErr, setFnameErr] = useState(false);
     const [gender, setGender] = useState("");
-    const [genderErr, setGenderErr] = useState(false);
+    const [dob, setDob] = useState("");
+    const [religion, setReligion] = useState("");
+    const [marital, setMarital] = useState("");
+    const [cnic, setCnic] = useState("");
+    const [contact, setReligion] = useState("");
+    const [address, setReligion] = useState("");
+    const [qualification, setReligion] = useState("");
+    const [degree, setReligion] = useState("");
+    const [institute, setReligion] = useState("");
+    const [completedate, setReligion] = useState("");
+    const [basicsalary, setReligion] = useState("");
+    const [salarytax, setReligion] = useState("");
+    const [grosssalary, setReligion] = useState("");
+    const [joindate, setReligion] = useState("");
+    const [emptype, setReligion] = useState("");
+    const [designation, setReligion] = useState("");
+    const [department, setReligion] = useState("");
+    const [status, setReligion] = useState("");
+
+    const [empcodeErr, setEmpcodeErr] = useState(false);
+    const [nameErr, setNameErr] = useState(false);
+    const [fnameErr, setFnameErr] = useState(false);
 
     const [email, setEmail] = useState([]);
     useEffect(() => {
@@ -28,8 +46,7 @@ const Information = () => {
     const nav = useNavigate();
     function handleSubmit(e) {
         if (emp_code.length === 0 || name.length === 0 ||
-            name.length < 5 || fname.length === 0 || fname.length < 5
-            || gender !== 'Male' || gender !== 'Female') {
+            name.length < 5 || fname.length === 0 || fname.length < 5) {
             Swal({
                 icon: 'warning',
                 title: 'WARNING!',
@@ -38,7 +55,7 @@ const Information = () => {
             })
         }
         else {
-            PostCall('emp-info', { emp_code: emp_code, name: name, fname: fname, gender: gender }, function (result) {
+            PostCall('emp-info', { emp_code: emp_code, name: name, fname: fname, gender: gender, dob:dob, religion:religion }, function (result) {
                 Swal({
                     icon: 'success',
                     title: 'Added!',
@@ -94,21 +111,6 @@ const Information = () => {
 
     }
 
-    function genderHandler(e) {
-        let item = e.target.value;
-        if (item !== 'Gender') {
-            setGenderErr(false)
-        }
-        else if (item == 'Gender') {
-            setGenderErr(true)
-        }
-        else {
-            setGenderErr(false)
-        }
-        setGender(item)
-
-    }
-
     const [num1, setNum1] = useState();
     const [num2, setNum2] = useState();
     const [total, setTotal] = useState();
@@ -154,12 +156,11 @@ const Information = () => {
                                             {fnameErr ? <span className='error'>User Not Valid</span> : ""}
                                         </td>
                                         <td>
-                                            <select className='mytdinputinfo' name="gender" value={gender} onChange={genderHandler}>
+                                            <select className='mytdinputinfo' name="gender" value={gender} onChange={(e) => (setGender(e.target.value))}>
                                                 <option>Gender</option>
                                                 <option>Male</option>
                                                 <option>Female</option>
                                             </select>
-                                            {genderErr ? <span className='error'>Please select Gender</span> : ""}
                                         </td>
                                     </tr>
                                     <tr>
@@ -169,11 +170,14 @@ const Information = () => {
                                         <td><label>CNIC (without dashes)</label></td>
                                     </tr>
                                     <tr>
-                                        <td><input type="date" className='mytdinputinfo' /></td>
+                                        <td><input type="date" name='dob' onChange={(e) => (setDob(e.target.value))} className='mytdinputinfo' /></td>
                                         <td>
-                                            <select className='mytdinputinfo'>
+                                            <select className='mytdinputinfo' name="religion" value={religion} onChange={(e) => (setReligion(e.target.value))}>
                                                 <option>Religion</option>
                                                 <option>Islam</option>
+                                                <option>Jew</option>
+                                                <option>Hindu</option>
+                                                <option>Other</option>
                                                 {
                                                     email.map((getemail, index) => (
                                                         <option key={index} value={getemail.id}>{getemail.email}</option>
