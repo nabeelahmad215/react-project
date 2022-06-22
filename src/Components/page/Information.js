@@ -14,20 +14,20 @@ const Information = () => {
     const [religion, setReligion] = useState("");
     const [marital, setMarital] = useState("");
     const [cnic, setCnic] = useState("");
-    const [contact, setReligion] = useState("");
-    const [address, setReligion] = useState("");
-    const [qualification, setReligion] = useState("");
-    const [degree, setReligion] = useState("");
-    const [institute, setReligion] = useState("");
-    const [completedate, setReligion] = useState("");
-    const [basicsalary, setReligion] = useState("");
-    const [salarytax, setReligion] = useState("");
-    const [grosssalary, setReligion] = useState("");
-    const [joindate, setReligion] = useState("");
-    const [emptype, setReligion] = useState("");
-    const [designation, setReligion] = useState("");
-    const [department, setReligion] = useState("");
-    const [status, setReligion] = useState("");
+    const [contact, setContact] = useState("");
+    const [address, setAddress] = useState("");
+    const [qualification, setQualification] = useState("");
+    const [degree, setDegree] = useState("");
+    const [institute, setInstitute] = useState("");
+    const [completedate, setCompletedate] = useState("");
+    const [basicsalary, setBasicsalary] = useState("");
+    const [salarytax, setSalarytax] = useState("");
+    const [grosssalary, setGrosssalary] = useState("");
+    const [joindate, setJoindate] = useState("");
+    const [emptype, setEmptype] = useState("");
+    const [designation, setDesignation] = useState("");
+    const [department, setDepartment] = useState("");
+    const [status, setStatus] = useState("");
 
     const [empcodeErr, setEmpcodeErr] = useState(false);
     const [nameErr, setNameErr] = useState(false);
@@ -55,7 +55,13 @@ const Information = () => {
             })
         }
         else {
-            PostCall('emp-info', { emp_code: emp_code, name: name, fname: fname, gender: gender, dob:dob, religion:religion }, function (result) {
+            PostCall('emp-info', {
+                emp_code: emp_code, name: name, fname: fname, gender: gender, dob: dob, religion: religion,
+                marital: marital, cnic: cnic, contact: contact, address: address, qualification: qualification,
+                degree: degree, institute: institute, completedate: completedate, basicsalary: basicsalary,
+                salarytax: salarytax, grosssalary: grosssalary, joindate: joindate, emptype: emptype,
+                designation: designation, department: department, status: status
+            }, function (result) {
                 Swal({
                     icon: 'success',
                     title: 'Added!',
@@ -116,7 +122,7 @@ const Information = () => {
     const [total, setTotal] = useState();
     let newval = num2 / 100;
     function sum() {
-      setTotal(num1 - num1 * newval);
+        setTotal(num1 - num1 * newval);
     }
 
     return (
@@ -180,27 +186,27 @@ const Information = () => {
                                                 <option>Other</option>
                                                 {
                                                     email.map((getemail, index) => (
-                                                        <option key={index} value={getemail.id}>{getemail.email}</option>
+                                                        <option key={index} value={getemail.email}>{getemail.email}</option>
                                                     ))
                                                 }
                                             </select>
                                         </td>
                                         <td>
-                                            <select className='mytdinputinfo'>
+                                        <select className='mytdinputinfo' name="marital" value={marital} onChange={(e) => (setMarital(e.target.value))}>
                                                 <option>Marital Status</option>
                                                 <option>Married</option>
                                                 <option>Non-Married</option>
                                             </select>
                                         </td>
-                                        <td><input type="text" className='mytdinputinfo' /></td>
+                                        <td><input type="text" name='cnic' onChange={(e) => (setCnic(e.target.value))} className='mytdinputinfo' /></td>
                                     </tr>
                                     <tr>
                                         <td><label>Contact Number</label></td>
                                         <td><label>Address</label></td>
                                     </tr>
                                     <tr>
-                                        <td><input type="text" className='mytdinputinfo' /></td>
-                                        <td colSpan='3'><input type="text" className='mytdinputinfo' /></td>
+                                        <td><input type="text" name='contact' onChange={(e) => (setContact(e.target.value))} className='mytdinputinfo' /></td>
+                                        <td colSpan='3'><input type="text" name='address' onChange={(e) => (setAddress(e.target.value))} className='mytdinputinfo' /></td>
                                     </tr>
                                 </table>
                                 <u><h3 style={{ marginTop: 15 }}>Education</h3></u>
@@ -212,10 +218,10 @@ const Information = () => {
                                         <td><label>Completion Date</label></td>
                                     </tr>
                                     <tr>
-                                        <td><input type="text" className='mytdinputinfo' /></td>
-                                        <td><input type="text" className='mytdinputinfo' /></td>
-                                        <td><input type="text" className='mytdinputinfo' /></td>
-                                        <td><input type="date" className='mytdinputinfo' /> </td>
+                                        <td><input type="text" name='qualification' onChange={(e) => (setQualification(e.target.value))} className='mytdinputinfo' /></td>
+                                        <td><input type="text" name='degree' onChange={(e) => (setDegree(e.target.value))} className='mytdinputinfo' /></td>
+                                        <td><input type="text" name='institute' onChange={(e) => (setInstitute(e.target.value))} className='mytdinputinfo' /></td>
+                                        <td><input type="date" name='completedate' onChange={(e) => (setCompletedate(e.target.value))} className='mytdinputinfo' /></td>
                                     </tr>
                                 </table>
                                 <u><h3 style={{ marginTop: 15 }}>Payroll</h3></u>
@@ -267,7 +273,7 @@ const Information = () => {
                                             </select>
                                         </td>
                                         <td>
-                                            <select className='mytdinputinfo'>
+                                        <select className='mytdinputinfo' name="status" value={status} onChange={(e) => (setStatus(e.target.value))}>
                                                 <option>Status</option>
                                                 <option>Active</option>
                                                 <option>Inactive</option>
