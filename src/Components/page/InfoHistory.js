@@ -36,6 +36,7 @@ const InfoHistory = () => {
                                         <th>Father/Husband</th>
                                         <th>Gender</th>
                                         <th>DOB</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -49,6 +50,9 @@ const InfoHistory = () => {
                                                         <td>{row.fname}</td>
                                                         <td>{row.gender}</td>
                                                         <td>{row.dob}</td>
+                                                        <td><a href='#'>Edit</a> |
+                                                            <a href="http://localhost:8000/api/empinfodelete/{row.id}">Delete</a>
+                                                        </td>
                                                     </tr>
                                                 )
                                             }
@@ -58,6 +62,7 @@ const InfoHistory = () => {
                                     }
                                 </tbody>
                             </table>
+                            <input type='text' />
                         </div>
                     </div>
                 </div>
