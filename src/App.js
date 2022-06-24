@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import Dashboard from './Components/page/Dashboard';
 import EmployeeLayout from './Components/page/EmployeeLayout';
 import InfoHistory from './Components/page/InfoHistory';
@@ -25,6 +25,7 @@ const App = () => {
       <Route path='/employee-dashboard' element={<EmployeeLayout />} />
       <Route path='/info' element={<Information />} />
       <Route path='/info-history' element={<InfoHistory />} />
+      <Route path='/demo-history' element={<Navigate to='/info-history' />} />
       <Route path='/promotion' element={<Promotion />} />
       <Route path='/resignation' element={<Resignation />} />
       <Route path='/payroll-dashboard' element={<PayrollLayout />} />

@@ -2,6 +2,8 @@ import '../css/dashboard.css';
 import EmployeeLayout from './EmployeeLayout';
 import { useState, useEffect } from 'react';
 import '../css/table.css';
+import Swal from 'sweetalert';
+import { Link, useNavigate } from 'react-router-dom';
 
 const InfoHistory = () => {
     const [email, setEmail] = useState([]);
@@ -13,6 +15,20 @@ const InfoHistory = () => {
         }
         getemail();
     }, []);
+    const nav =useNavigate();
+    let deleteEmp = async (id) => {
+        let res= await fetch(`http://localhost:8000/api/empinfodelete/${id}`);
+        
+        if (res = true) {
+            nav("/demo-history")
+            Swal({
+                title: 'Deleted!',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                dangerMode: true
+            })      
+        }
+    }
 
     return (
         <>
@@ -50,7 +66,7 @@ const InfoHistory = () => {
                                                         <td>{row.fname}</td>
                                                         <td>{row.gender}</td>
                                                         <td>{row.dob}</td>
-                                                        <td><a href='#'>Edit</a> | <a href="http://localhost:8000/api/empinfodelete/{row.id}">Delete</a>
+                                                        <td><a href='#'>Edit</a> | <button type="submit" onClick={() => deleteEmp(row.id)}>Delete</button>
                                                         </td>
                                                     </tr>
                                                 )
