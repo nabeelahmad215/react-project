@@ -29,6 +29,11 @@ const Information = () => {
     const [department, setDepartment] = useState("");
     const [status, setStatus] = useState("");
 
+    let newval = salarytax / 100;
+    function sum() {
+        setGrosssalary(basicsalary - basicsalary * newval);
+    }
+
     const [empcodeErr, setEmpcodeErr] = useState(false);
     const [nameErr, setNameErr] = useState(false);
     const [fnameErr, setFnameErr] = useState(false);
@@ -117,13 +122,7 @@ const Information = () => {
 
     }
 
-    const [num1, setNum1] = useState();
-    const [num2, setNum2] = useState();
-    const [total, setTotal] = useState();
-    let newval = num2 / 100;
-    function sum() {
-        setTotal(num1 - num1 * newval);
-    }
+
 
     return (
         <>
@@ -192,7 +191,7 @@ const Information = () => {
                                             </select>
                                         </td>
                                         <td>
-                                        <select className='mytdinputinfo' name="marital" value={marital} onChange={(e) => (setMarital(e.target.value))}>
+                                            <select className='mytdinputinfo' name="marital" value={marital} onChange={(e) => (setMarital(e.target.value))}>
                                                 <option>Marital Status</option>
                                                 <option>Married</option>
                                                 <option>Non-Married</option>
@@ -233,16 +232,17 @@ const Information = () => {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input type="text" className='mytdinputinfo' value={num1}
-                                                onChange={(event) => setNum1(+event.target.value)} />
+                                            <input type="text" name='basicsalary' className='mytdinputinfo' value={basicsalary}
+                                                onChange={(e) => setBasicsalary(+e.target.value)} />
                                         </td>
                                         <td>
-                                            <input type="number" className='mytdinputinfo' value={num2}
-                                                onChange={(event) => setNum2(+event.target.value)} />
+                                            <input type="number" name='salarytax' className='mytdinputinfo' value={salarytax}
+                                                onChange={(e) => setSalarytax(+e.target.value)} />
                                             <button type="button" onClick={sum}>Calculate</button>
                                         </td>
                                         <td>
-                                            <input type="text" className='mytdinputinfo' readOnly value={total} />
+                                            <input type="text" name='grosssalary'className='mytdinputinfo' readOnly value={grosssalary}
+                                                onChange={(e) => setGrosssalary(e.target.value)} />
                                         </td>
                                     </tr>
                                 </table>
@@ -273,7 +273,7 @@ const Information = () => {
                                             </select>
                                         </td>
                                         <td>
-                                        <select className='mytdinputinfo' name="status" value={status} onChange={(e) => (setStatus(e.target.value))}>
+                                            <select className='mytdinputinfo' name="status" value={status} onChange={(e) => (setStatus(e.target.value))}>
                                                 <option>Status</option>
                                                 <option>Active</option>
                                                 <option>Inactive</option>
