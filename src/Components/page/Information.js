@@ -29,6 +29,7 @@ const Information = () => {
     const [department, setDepartment] = useState("");
     const [status, setStatus] = useState("");
 
+
     let newval = salarytax / 100;
     function sum() {
         setGrosssalary(basicsalary - basicsalary * newval);
@@ -241,7 +242,7 @@ const Information = () => {
                                             <button type="button" onClick={sum}>Calculate</button>
                                         </td>
                                         <td>
-                                            <input type="text" name='grosssalary'className='mytdinputinfo' readOnly value={grosssalary}
+                                            <input type="text" name='grosssalary' className='mytdinputinfo' readOnly value={grosssalary}
                                                 onChange={(e) => setGrosssalary(e.target.value)} />
                                         </td>
                                     </tr>
@@ -256,17 +257,20 @@ const Information = () => {
                                         <td><label>Status</label></td>
                                     </tr>
                                     <tr>
-                                        <td><input type="date" className='mytdinputinfo' /></td>
+                                        <td><input type="date" name='joindate' onChange={(e) => (setJoindate(e.target.value))} className='mytdinputinfo' /></td>
                                         <td>
-                                            <select className='mytdinputinfo'>
+                                            <select className='mytdinputinfo' name="emptype" value={emptype} onChange={(e) => (setEmptype(e.target.value))}>
                                                 <option>Type</option>
                                                 <option>Permanent</option>
                                                 <option>Internee</option>
                                             </select>
                                         </td>
-                                        <td><input type="text" className='mytdinputinfo' /></td>
                                         <td>
-                                            <select className='mytdinputinfo'>
+                                            <input type="text" name='designation' className='mytdinputinfo' value={designation}
+                                                onChange={(e) => setDesignation(e.target.value)} />
+                                        </td>
+                                        <td>
+                                            <select className='mytdinputinfo' name="department" value={department} onChange={(e) => (setDepartment(e.target.value))}>
                                                 <option>Department</option>
                                                 <option>IT</option>
                                                 <option>Admin</option>

@@ -15,17 +15,19 @@ const InfoHistory = () => {
         }
         getemail();
     }, []);
+
     const nav =useNavigate();
     let deleteEmp = async (id) => {
         let res= await fetch(`http://localhost:8000/api/empinfodelete/${id}`);
-        
         if (res = true) {
             nav("/demo-history")
             Swal({
                 title: 'Deleted!',
-                text: "You won't be able to revert this!",
+                text: "Redirecting...",
                 icon: 'warning',
-                dangerMode: true
+                dangerMode: true,
+                timer: 3000,
+                buttons: false
             })      
         }
     }
@@ -66,7 +68,8 @@ const InfoHistory = () => {
                                                         <td>{row.fname}</td>
                                                         <td>{row.gender}</td>
                                                         <td>{row.dob}</td>
-                                                        <td><a href='#'>Edit</a> | <button type="submit" onClick={() => deleteEmp(row.id)}>Delete</button>
+                                                        <td>
+                                                            <Link to={`/edit-employee/${row.id}`}><i className="uil-pen del-btn"></i></Link> | <i className="uil-trash-alt del-btn" onClick={() => deleteEmp(row.id)}></i>
                                                         </td>
                                                     </tr>
                                                 )

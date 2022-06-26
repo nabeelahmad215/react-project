@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import Dashboard from './Components/page/Dashboard';
+import EditInformation from './Components/page/EditInformation';
 import EmployeeLayout from './Components/page/EmployeeLayout';
 import InfoHistory from './Components/page/InfoHistory';
 import Information from './Components/page/Information';
@@ -26,6 +27,7 @@ const App = () => {
       <Route path='/info' element={<Information />} />
       <Route path='/info-history' element={<InfoHistory />} />
       <Route path='/demo-history' element={<Navigate to='/info-history' />} />
+      <Route path='/edit-employee/:id' element={<EditInformation />} />
       <Route path='/promotion' element={<Promotion />} />
       <Route path='/resignation' element={<Resignation />} />
       <Route path='/payroll-dashboard' element={<PayrollLayout />} />
