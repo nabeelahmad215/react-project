@@ -14,7 +14,7 @@ const EditInformation = () => {
 
     useEffect(() => {
         const edituserid = async () => {
-            const reqdata = await fetch(`http://localhost:8000/api/empinfoupdate/${id}`);
+            const reqdata = await fetch(`http://localhost:8000/api/empinfoedit/${id}`);
             const res = await reqdata.json();
             setEdituser(await res);
         }
@@ -25,6 +25,15 @@ const EditInformation = () => {
         setEdituser({ ...edituser, [e.target.name]: e.target.value });
     }
 
+    function handleUpdate (e){
+       
+        PostCall(`empinfoupdate/${id}`, edituser, function (result) {
+            console.log("success")
+        });
+        
+        e.preventDefault();
+        
+    }
     return (
         <>
             <div>
@@ -39,7 +48,7 @@ const EditInformation = () => {
                 <div class="p-4 mybox">
                     <div class="welcome">
                         <div class="content rounded-3 p-2">
-                            <form>
+                            <form onSubmit={handleUpdate}>
                                 <u><h3>Personal Information</h3></u>
                                 <table className='mytableinfo'>
                                     <tr>
@@ -50,7 +59,7 @@ const EditInformation = () => {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input type="text" name="name" className='mytdinputinfo' value={edituser.emp_code} onChange={(e) => handleEdit(e)} />
+                                            <input type="text" name="emp_code" className='mytdinputinfo' value={edituser.emp_code} onChange={(e) => handleEdit(e)} />
                                             {/* {empcodeErr ? <span className='error'>Employee Code must be at least 5 characters long!</span> : ""} */}
                                         </td>
 
