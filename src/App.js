@@ -12,6 +12,8 @@ import PayrollLayout from './Components/page/PayrollLayout';
 import Promotion from './Components/page/Promotion';
 import Reimburstment from './Components/page/Reimburstment';
 import Resignation from './Components/page/Resignation';
+import ResignationHistory from './Components/page/ResignationHistory';
+import ResignEdit from './Components/page/ResignEdit';
 import Salary from './Components/page/Salary';
 import Signup from './Components/page/Signup';
 import UserList from './Components/page/UserList';
@@ -30,6 +32,9 @@ const App = () => {
       <Route path='/edit-employee/:id' element={<EditInformation />} />
       <Route path='/promotion' element={<Promotion />} />
       <Route path='/resignation' element={<Resignation />} />
+      <Route path='/resignation-history' element={<ResignationHistory />} />
+      <Route path='/demo-resignation-history' element={<Navigate to='/resignation-history' />} />
+      <Route path='/edit-resign/:id' element={<ResignEdit />} />
       <Route path='/payroll-dashboard' element={<PayrollLayout />} />
       <Route path='/salary-sheet' element={<Salary />} />
       <Route path='/payroll' element={<Payroll />} />

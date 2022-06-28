@@ -1,11 +1,47 @@
 import '../css/inform.css';
-import EmployeeLayout from './EmployeeLayout';
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { PostCall } from './PostCall';
+import EmployeeLayout from './EmployeeLayout';
 import Swal from 'sweetalert';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
-const Resignation = () => {
+const ResignEdit = () => {
+
+    const [edituser, setEdituser] = useState({ name: '' });
+    const navi = useNavigate();
+    const { id } = useParams();
+    console.log(id);
+
+    useEffect(() => {
+        const edituserid = async () => {
+            const reqdata = await fetch(`http://localhost:8000/api/edit-resign/${id}`);
+            const res = await reqdata.json();
+            setEdituser(await res);
+        }
+        edituserid();
+    }, []);
+
+    const handleEdit = (e) => {
+        setEdituser({ ...edituser, [e.target.name]: e.target.value });
+    }
+
+    function handleUpdate(e) {
+
+        PostCall(`resignupdate/${id}`, edituser, function (result) {
+            Swal({
+                icon: 'success',
+                title: 'Update!',
+                text: 'Data Has Been Update.',
+                showConfirmButton: true
+            })
+            navi("/resignation-history")
+        });
+
+        e.preventDefault();
+
+    }
+
+
     const [email, setEmail] = useState([]);
     useEffect(() => {
         const getemail = async () => {
@@ -15,30 +51,6 @@ const Resignation = () => {
         }
         getemail();
     }, []);
-
-    const [doc_date, setDoc_date] = useState("");
-    const [emp_code, setEmp_code] = useState("");
-    const [resignation_date, setResignation_date] = useState("");
-    const [notice_date, setNotice_date] = useState("");
-    const [detail, setDetail] = useState("");
-    const [status, setStatus] = useState("");
-    const nav = useNavigate();
-
-    function handleSubmit(e) {
-        PostCall('resignation', {
-            doc_date: doc_date, emp_code: emp_code, resignation_date: resignation_date, notice_date: notice_date, detail: detail, status:status
-        }, function (result) {
-            Swal({
-                icon: 'success',
-                title: 'Added!',
-                text: 'data has been Added.',
-                showConfirmButton: true
-            })
-            nav("/resignation-history")
-        });
-        e.preventDefault();
-    }
-
     return (
         <>
             <div>
@@ -53,21 +65,21 @@ const Resignation = () => {
                 <div class="p-4">
                     <div class="welcome">
                         <div class="content rounded-3 p-2">
-                            <form onSubmit={handleSubmit}>
+                            <form onSubmit={handleUpdate}>
                                 <table className='mytable'>
                                     <tr>
                                         <td><label>Doc Date</label></td>
                                         <td><label>Resignation Date</label></td>
                                         <td><label>Notice Date</label></td>
-                                        <td><label>Employee Name</label></td>
+                                        <td><label>Employee Code</label></td>
                                     </tr>
                                     <tr>
-                                        <td><input type="date" name='doc_date' onChange={(e) => (setDoc_date(e.target.value))} className='mytdinput' /></td>
-                                        <td><input type="date" name='resignation_date' onChange={(e) => (setResignation_date(e.target.value))} className='mytdinput' /></td>
-                                        <td><input type="date" name='notice_date' onChange={(e) => (setNotice_date(e.target.value))} className='mytdinput' /></td>
+                                        <td><input type="date" name='doc_date' value={edituser.doc_date} onChange={handleEdit} className='mytdinput' /></td>
+                                        <td><input type="date" name='resignation_date' value={edituser.resignation_date} onChange={handleEdit} className='mytdinput' /></td>
+                                        <td><input type="date" name='notice_date' value={edituser.notice_date} onChange={handleEdit} className='mytdinput' /></td>
                                         <td>
-                                            <select className='mytdinput' name='emp_code' onChange={(e) => (setEmp_code(e.target.value))}>
-                                                <option>---Select Any Value---</option>
+                                            <select className='mytdinput' name='emp_code' value={edituser.emp_code} onChange={handleEdit}>
+                                                <option></option>
                                                 {
                                                     email.map((getemail, index) => (
                                                         <option key={index} value={getemail.emp_code}>[{getemail.emp_code}] ~ {getemail.name}</option>
@@ -81,9 +93,9 @@ const Resignation = () => {
                                         <td><label>Status</label></td>
                                     </tr>
                                     <tr>
-                                        <td colSpan='2'><input type="text" name='detail' onChange={(e) => (setDetail(e.target.value))} className='mytdinput' /></td>
+                                        <td colSpan='2'><input type="text" name='detail' value={edituser.detail} onChange={handleEdit} className='mytdinput' /></td>
                                         <td>
-                                            <select className='mytdinput' name='status' onChange={(e) => (setStatus(e.target.value))}>
+                                            <select className='mytdinput' name='status' value={edituser.status} onChange={handleEdit}>
                                                 <option></option>
                                                 <option>Approved</option>
                                                 <option>Disapproved</option>
@@ -92,7 +104,7 @@ const Resignation = () => {
                                     </tr>
                                 </table>
                                 <div className='btnposition'>
-                                    <button type="submit" class="button button2">SAVE</button>
+                                    <button type="submit" class="button button2">UPDATE</button>
                                     <Link to="/resignation-history"><button class="button button1">HISTORY</button></Link>
                                 </div>
                             </form>
@@ -103,4 +115,4 @@ const Resignation = () => {
         </>
     )
 }
-export default Resignation;
+export default ResignEdit;
