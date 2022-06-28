@@ -18,10 +18,10 @@ const Promotion = () => {
                         <div class="content rounded-3 p-2">
                             <table className='mytable'>
                                 <tr>
-                                    <td><label>Doc No.</label></td>
-                                    <td><label>Promotion Date</label></td>
                                     <td><label>Employee Name</label></td>
+                                    <td><label>Promotion Date</label></td>
                                     <td><label>Promoted From</label></td>
+                                    <td><label>Promoted To</label></td>
                                 </tr>
                                 <tr>
                                     <td><input type="text" className='mytdinput' /></td>
@@ -30,11 +30,13 @@ const Promotion = () => {
                                     <td><input type="text" className='mytdinput' /></td>
                                 </tr>
                                 <tr>
-                                    <td><label>Promoted To</label></td>
-                                    <td><label>Current Salary</label></td>
-                                    <td><label>Promoted Salary</label></td>
+                                    <td><label>Current Basic Salary</label></td>
+                                    <td><label>Promoted Basic Salary</label></td>
+                                    <td><label>Salary Tax</label></td>
+                                    <td><label>Gross Salary</label></td>
                                 </tr>
                                 <tr>
+                                    <td><input type="text" className='mytdinput' /></td>
                                     <td><input type="text" className='mytdinput' /></td>
                                     <td><input type="text" className='mytdinput' /></td>
                                     <td><input type="text" className='mytdinput' /></td>

@@ -22,17 +22,23 @@ const EditInformation = () => {
     }, []);
 
     const handleEdit = (e) => {
-        setEdituser({ ...edituser, [e.target.name]: e.target.value });
+        setEdituser({ ...edituser, [e.target.name]: e.target.value});
     }
 
-    function handleUpdate (e){
-       
+    function handleUpdate(e) {
+
         PostCall(`empinfoupdate/${id}`, edituser, function (result) {
-            console.log("success")
+            Swal({
+                icon: 'success',
+                title: 'Update!',
+                text: 'Data Has Been Update.',
+                showConfirmButton: true
+            })
+            navi("/info-history")
         });
-        
+
         e.preventDefault();
-        
+
     }
     return (
         <>
@@ -143,17 +149,16 @@ const EditInformation = () => {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input type="text" name='basicsalary' className='mytdinputinfo' value={edituser.basicsalary}
-                                                 />
+                                            <input type="text" name="basicsalary" className='mytdinputinfo' value={edituser.basicsalary}
+                                                onChange={(e) => handleEdit(e)} />
                                         </td>
                                         <td>
-                                            <input type="number" name='salarytax' className='mytdinputinfo' value={edituser.salarytax}
-                                                 />
-                                            
+                                            <input type="number" name="salarytax" className='mytdinputinfo' value={edituser.salarytax}
+                                                onChange={(e) => handleEdit(e)} /> 
                                         </td>
                                         <td>
-                                            <input type="text" name='grosssalary' className='mytdinputinfo' readOnly value={edituser.grosssalary}
-                                                 />
+                                            <input type="text" name="grosssalary" className='mytdinputinfo' readOnly value={edituser.grosssalary}
+                                                onChange={(e) => handleEdit(e)} />
                                         </td>
                                     </tr>
                                 </table>
