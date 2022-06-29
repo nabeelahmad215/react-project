@@ -51,6 +51,7 @@ const ResignEdit = () => {
         }
         getemail();
     }, []);
+    
     return (
         <>
             <div>
@@ -89,18 +90,11 @@ const ResignEdit = () => {
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colSpan='2'><label>Resignation Detail</label></td>
-                                        <td><label>Status</label></td>
+                                        <td><label>Resignation Detail</label></td>
+                                        
                                     </tr>
                                     <tr>
-                                        <td colSpan='2'><input type="text" name='detail' value={edituser.detail} onChange={handleEdit} className='mytdinput' /></td>
-                                        <td>
-                                            <select className='mytdinput' name='status' value={edituser.status} onChange={handleEdit}>
-                                                <option></option>
-                                                <option>Approved</option>
-                                                <option>Disapproved</option>
-                                            </select>
-                                        </td>
+                                        <td colSpan='4'><textarea type="text" name='detail' value={edituser.detail} onChange={handleEdit} rows="4" cols="148" className='textarea' /></td>
                                     </tr>
                                 </table>
                                 <div className='btnposition'>

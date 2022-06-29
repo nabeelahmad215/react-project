@@ -3,9 +3,8 @@ import EmployeeLayout from './EmployeeLayout';
 import { useState, useEffect } from 'react';
 import '../css/table.css';
 import Swal from 'sweetalert';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { PostCall } from './PostCall';
-import { useParams } from 'react-router-dom';
 
 const ResignationHistory = () => {
     const [email, setEmail] = useState([]);
@@ -18,9 +17,9 @@ const ResignationHistory = () => {
         getemail();
     }, []);
 
-    const nav =useNavigate();
+    const nav = useNavigate();
     let deleteEmp = async (id) => {
-        let res= await fetch(`http://localhost:8000/api/resignationdelete/${id}`);
+        let res = await fetch(`http://localhost:8000/api/resignationdelete/${id}`);
         if (res = true) {
             nav("/demo-resignation-history")
             Swal({
@@ -30,7 +29,7 @@ const ResignationHistory = () => {
                 dangerMode: true,
                 timer: 3000,
                 buttons: false
-            })      
+            })
         }
     }
 
@@ -41,7 +40,7 @@ const ResignationHistory = () => {
 
     function handleUpdate(id) {
         PostCall(`statusupdate/${id}`, {
-             status:status
+            status: status
         }, function (result) {
             Swal({
                 icon: 'success',
@@ -94,9 +93,9 @@ const ResignationHistory = () => {
                                                             <option></option>
                                                             <option>Approved</option>
                                                             <option>Disapproved</option>
-                                                            </select></td>
+                                                        </select></td>
                                                         <td>
-                                                        <i className="uil-bookmark del-btn" onClick={() => handleUpdate(row.id)}></i> | <Link to={`/edit-resign/${row.id}`}><i className="uil-pen del-btn"></i></Link> | <i className="uil-trash-alt del-btn" onClick={() => deleteEmp(row.id)}></i>
+                                                            <Link to={`/edit-resign/${row.id}`}><i className="uil-pen del-btn"></i></Link> | <i className="uil-check del-btn" onClick={() => handleUpdate(row.id)}></i> | <i className="uil-trash-alt del-btn" onClick={() => deleteEmp(row.id)}></i>
                                                         </td>
                                                     </tr>
                                                 )

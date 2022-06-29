@@ -95,3 +95,8 @@ body{
 	font-size: 1em;
 	display: relative;
   }
+  .taxbtn{
+	height: 38px;
+    width: 30px;
+    border-radius: 5px;
+  }

@@ -21,12 +21,11 @@ const Resignation = () => {
     const [resignation_date, setResignation_date] = useState("");
     const [notice_date, setNotice_date] = useState("");
     const [detail, setDetail] = useState("");
-    const [status, setStatus] = useState("");
     const nav = useNavigate();
 
     function handleSubmit(e) {
         PostCall('resignation', {
-            doc_date: doc_date, emp_code: emp_code, resignation_date: resignation_date, notice_date: notice_date, detail: detail, status:status
+            doc_date: doc_date, emp_code: emp_code, resignation_date: resignation_date, notice_date: notice_date, detail: detail
         }, function (result) {
             Swal({
                 icon: 'success',
@@ -78,17 +77,9 @@ const Resignation = () => {
                                     </tr>
                                     <tr>
                                         <td colSpan='2'><label>Resignation Detail</label></td>
-                                        <td><label>Status</label></td>
                                     </tr>
                                     <tr>
-                                        <td colSpan='2'><input type="text" name='detail' onChange={(e) => (setDetail(e.target.value))} className='mytdinput' /></td>
-                                        <td>
-                                            <select className='mytdinput' name='status' onChange={(e) => (setStatus(e.target.value))}>
-                                                <option></option>
-                                                <option>Approved</option>
-                                                <option>Disapproved</option>
-                                            </select>
-                                        </td>
+                                        <td colSpan='4'><textarea type="text" name='detail' onChange={(e) => (setDetail(e.target.value))} rows="4" cols="148" className='textarea' /></td>
                                     </tr>
                                 </table>
                                 <div className='btnposition'>

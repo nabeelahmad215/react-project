@@ -239,7 +239,8 @@ const Information = () => {
                                         <td>
                                             <input type="number" name='salarytax' className='mytdinputinfo' value={salarytax}
                                                 onChange={(e) => setSalarytax(+e.target.value)} />
-                                            <button type="button" onClick={sum}>Calculate</button>
+                                            <button type="button" onClick={sum} className="taxbtn"><i className="uil-focus-add del-btn"></i></button>
+                                            {/* <i className="uil-focus-add del-btn" onClick={sum}></i> */}
                                         </td>
                                         <td>
                                             <input type="text" name='grosssalary' className='mytdinputinfo' readOnly value={grosssalary}
