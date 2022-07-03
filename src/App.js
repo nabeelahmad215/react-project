@@ -10,6 +10,7 @@ import Login from './Components/page/Login';
 import Payroll from './Components/page/Payroll';
 import PayrollLayout from './Components/page/PayrollLayout';
 import Promotion from './Components/page/Promotion';
+import PromotionHistory from './Components/page/PromotionHistory';
 import Reimburstment from './Components/page/Reimburstment';
 import Resignation from './Components/page/Resignation';
 import ResignationHistory from './Components/page/ResignationHistory';
@@ -31,6 +32,7 @@ const App = () => {
       <Route path='/demo-history' element={<Navigate to='/info-history' />} />
       <Route path='/edit-employee/:id' element={<EditInformation />} />
       <Route path='/promotion' element={<Promotion />} />
+      <Route path='/promotion-history' element={<PromotionHistory />} />
       <Route path='/resignation' element={<Resignation />} />
       <Route path='/resignation-history' element={<ResignationHistory />} />
       <Route path='/demo-resignation-history' element={<Navigate to='/resignation-history' />} />

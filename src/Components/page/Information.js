@@ -39,16 +39,6 @@ const Information = () => {
     const [nameErr, setNameErr] = useState(false);
     const [fnameErr, setFnameErr] = useState(false);
 
-    const [email, setEmail] = useState([]);
-    useEffect(() => {
-        const getemail = async () => {
-            const resemail = await fetch("http://localhost:8000/api/dropdown");
-            const resem = await resemail.json();
-            setEmail(await resem);
-        }
-        getemail();
-    }, []);
-
     const nav = useNavigate();
     function handleSubmit(e) {
         if (emp_code.length === 0 || name.length === 0 ||
@@ -184,11 +174,6 @@ const Information = () => {
                                                 <option>Jew</option>
                                                 <option>Hindu</option>
                                                 <option>Other</option>
-                                                {
-                                                    email.map((getemail, index) => (
-                                                        <option key={index} value={getemail.email}>{getemail.email}</option>
-                                                    ))
-                                                }
                                             </select>
                                         </td>
                                         <td>

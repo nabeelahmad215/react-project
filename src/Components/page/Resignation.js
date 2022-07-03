@@ -17,7 +17,7 @@ const Resignation = () => {
     }, []);
 
     const [doc_date, setDoc_date] = useState("");
-    const [emp_code, setEmp_code] = useState("");
+    const [emp_id, setEmp_id] = useState("");
     const [resignation_date, setResignation_date] = useState("");
     const [notice_date, setNotice_date] = useState("");
     const [detail, setDetail] = useState("");
@@ -25,7 +25,7 @@ const Resignation = () => {
 
     function handleSubmit(e) {
         PostCall('resignation', {
-            doc_date: doc_date, emp_code: emp_code, resignation_date: resignation_date, notice_date: notice_date, detail: detail
+            doc_date: doc_date, emp_id: emp_id, resignation_date: resignation_date, notice_date: notice_date, detail: detail
         }, function (result) {
             Swal({
                 icon: 'success',
@@ -65,11 +65,12 @@ const Resignation = () => {
                                         <td><input type="date" name='resignation_date' onChange={(e) => (setResignation_date(e.target.value))} className='mytdinput' /></td>
                                         <td><input type="date" name='notice_date' onChange={(e) => (setNotice_date(e.target.value))} className='mytdinput' /></td>
                                         <td>
-                                            <select className='mytdinput' name='emp_code' onChange={(e) => (setEmp_code(e.target.value))}>
+                                            <select className='mytdinput' name='emp_id' onChange={(e) => (setEmp_id(e.target.value))}>
                                                 <option>---Select Any Value---</option>
                                                 {
+                                                    
                                                     email.map((getemail, index) => (
-                                                        <option key={index} value={getemail.emp_code}>[{getemail.emp_code}] ~ {getemail.name}</option>
+                                                        <option key={index} value={getemail.id}>[{getemail.emp_code}] ~ {getemail.name}</option>
                                                     ))
                                                 }
                                             </select>

@@ -10,7 +10,13 @@ const Promotion = () => {
     const [email, setEmail] = useState([]);
     const [getid, setGetid] = useState('');
     const [getrowdata, setGetrowdata] = useState('');
-    const [current_salary, setCurrent_salary] = useState('');
+    const [emp_id, setEmp_id] = useState('');
+    const [promotion_date, setPromotion_date] = useState('');
+    const [promoted_to, setPromoted_to] = useState('');
+    const [promoted_salary, setPromoted_salary] = useState('');
+    const [promoted_tax, setPromoted_tax] = useState('');
+    const [promoted_gross, setPromoted_gross] = useState('');
+    const [detail, setDetail] = useState('');
 
     useEffect(() => {
         const getemail = async () => {
@@ -25,6 +31,16 @@ const Promotion = () => {
         const getid = e.target.value;
         setGetid(getid);
     }
+    const handleEmpstate = (e) => {
+        const newname = e.target.value;
+        setEmp_id(newname);
+    }
+
+    function handleStateId(e){
+        handleEmpid(e);
+        handleEmpstate(e);
+    }
+
 
     useEffect(() => {
         const getrowdata = async () => {
@@ -35,12 +51,12 @@ const Promotion = () => {
         getrowdata();
     }, [getid]);
 
-    
     const nav = useNavigate();
 
     function handleSubmit(e) {
         PostCall('promotion', {
-            current_salary: current_salary
+         emp_id:emp_id, promotion_date:promotion_date, promoted_to:promoted_to, promoted_salary:promoted_salary, 
+            promoted_tax:promoted_tax, promoted_gross:promoted_gross, detail:detail
         }, function (result) {
             Swal({
                 icon: 'success',
@@ -52,6 +68,7 @@ const Promotion = () => {
         });
         e.preventDefault();
     }
+
     return (
         <>
             <div>
@@ -59,7 +76,7 @@ const Promotion = () => {
                 <div class="p-4">
                     <div class="welcome">
                         <div class="content rounded-3 p-2">
-                            <h1 class="fs-5">Employee / Promotion {getid}</h1>
+                            <h1 class="fs-5">Employee / Promotion</h1>
                         </div>
                     </div>
                 </div>
@@ -76,7 +93,7 @@ const Promotion = () => {
                                     </tr>
                                     <tr>
                                         <td>
-                                            <select className='mytdinput' name='emp_code' onChange={handleEmpid}>
+                                            <select className='mytdinput' name="emp_id" onChange={handleStateId}>
                                                 <option></option>
                                                 {
                                                     email.map((getemail, index) => (
@@ -85,9 +102,9 @@ const Promotion = () => {
                                                 }
                                             </select>
                                         </td>
-                                        <td><input type="date" className='mytdinput' /></td>
-                                        <td><input type="text" className='mytdinput' value={[getrowdata.designation]} /></td>
-                                        <td><input type="text" className='mytdinput' /></td>
+                                        <td><input type="date" className='mytdinput' onChange={(e) => (setPromotion_date(e.target.value))}/></td>
+                                        <td><input type="text" className='mytdinput' value={getrowdata.designation}/></td>
+                                        <td><input type="text" className='mytdinput' onChange={(e) => (setPromoted_to(e.target.value))}/></td>
                                     </tr>
                                     <tr>
                                         <td><label>Current Basic Salary</label></td>
@@ -96,23 +113,21 @@ const Promotion = () => {
                                         <td><label>Gross Salary</label></td>
                                     </tr>
                                     <tr>
-                                        <td><input type="text" className='mytdinput' value={getrowdata.basicsalary} onChange={(e)=>setCurrent_salary(e.target.value)} /></td>
-                                        <td><input type="text" className='mytdinput' /></td>
-                                        <td><input type="text" className='mytdinput' /></td>
-                                        <td><input type="text" className='mytdinput' /></td>
+                                        <td><input type="text" className='mytdinput' value={getrowdata.basicsalary} /></td>
+                                        <td><input type="text" className='mytdinput' onChange={(e) => (setPromoted_salary(e.target.value))}/></td>
+                                        <td><input type="text" className='mytdinput' onChange={(e) => (setPromoted_tax(e.target.value))}/></td>
+                                        <td><input type="text" className='mytdinput' onChange={(e) => (setPromoted_gross(e.target.value))}/></td>
                                     </tr>
                                     <tr>
                                         <td><label>Detail</label></td>
                                     </tr>
                                     <tr>
-                                        <td colSpan='4'><textarea type="detail" rows="4" cols="148" className='textarea' /></td>
+                                        <td colSpan='4'><textarea type="detail" rows="4" cols="148" className='textarea' onChange={(e) => (setDetail(e.target.value))}/></td>
                                     </tr>
                                 </table>
                                 <div className='btnposition'>
                                     <button type="submit" class="button button2">SAVE</button>
-                                    <Link to="/info-history"><button class="button button1">HISTORY</button></Link>
-                                    <input type="text" className='mytdinput' value={getrowdata.name}/>
-                                    <input type="text" className='mytdinput' value={getrowdata.emp_code}/>
+                                    <Link to="/promotion-history"><button class="button button1">HISTORY</button></Link>
                                 </div>
                             </form>
                         </div>

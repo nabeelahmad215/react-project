@@ -44,7 +44,7 @@ const EmployeeLayout = () => {
                             <ul class="navbar-nav">
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">
-                                        <i data-show="show-side-navigation1" class="uil-bars show-side-btn"></i>
+                                        <i data-show="show-side-navigation1" class="uil-sign-out-alt show-side-btn"></i>
                                     </a>
                                 </li>
                             </ul>
