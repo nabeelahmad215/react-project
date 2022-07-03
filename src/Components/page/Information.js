@@ -113,8 +113,6 @@ const Information = () => {
 
     }
 
-
-
     return (
         <>
             <div>

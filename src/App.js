@@ -1,10 +1,15 @@
 import React from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
+import ApprovalLog from './Components/page/ApprovalLog';
+import ApprovalLogApproved from './Components/page/ApprovalLogApproved';
+import ApprovalLogPending from './Components/page/ApprovalLogPending';
+import ApprovalLogReject from './Components/page/ApprovalLogReject';
 import Dashboard from './Components/page/Dashboard';
 import EditInformation from './Components/page/EditInformation';
 import EmployeeLayout from './Components/page/EmployeeLayout';
 import InfoHistory from './Components/page/InfoHistory';
 import Information from './Components/page/Information';
+import Leave from './Components/page/Leave';
 import LeaveLayout from './Components/page/LeaveLayout';
 import Login from './Components/page/Login';
 import Payroll from './Components/page/Payroll';
@@ -25,7 +30,6 @@ const App = () => {
       <Route index element={<Dashboard />} />
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element={<Signup />} />
-      <Route path='/leave-layout' element={<LeaveLayout />} />
       <Route path='/employee-dashboard' element={<EmployeeLayout />} />
       <Route path='/info' element={<Information />} />
       <Route path='/info-history' element={<InfoHistory />} />
@@ -41,6 +45,13 @@ const App = () => {
       <Route path='/salary-sheet' element={<Salary />} />
       <Route path='/payroll' element={<Payroll />} />
       <Route path='/reimburstment' element={<Reimburstment />} />
+      <Route path='/leave-dashboard' element={<LeaveLayout />} />
+      <Route path='/leave-request' element={<Leave />} />
+      <Route path='/approval-log' element={<ApprovalLog />} />
+      <Route path='/approval-log/pending' element={<ApprovalLogPending />} />
+      <Route path='/approval-log/approved' element={<ApprovalLogApproved />} />
+      <Route path='/approval-log/reject' element={<ApprovalLogReject />} />
+      <Route path='/demo-leave-all' element={<Navigate to='/approval-log' />} />
       <Route path='/user-list' element={<UserList />} />
     </Routes>
   );

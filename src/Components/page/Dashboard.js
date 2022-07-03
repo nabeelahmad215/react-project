@@ -1,40 +1,33 @@
 import '../css/dashboard.css';
 import { Link } from 'react-router-dom';
+import logo from '../img/logo.jpg';
 
 const Dashboard = () => {
   return (
     <>
       <div>
-        <nav class="navbar navbar-expand-md">
-          <div class="container-fluid mx-2">
-            <div class="navbar-header">
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggle-navbar" aria-controls="toggle-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="uil-bars text-white"></i>
-              </button>
-              <a class="navbar-brand" href="#">admin<span class="main-color">kit</span></a>
-            </div>
-            <div class="collapse navbar-collapse" id="toggle-navbar">
-              <ul class="navbar-nav ms-auto">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Settings
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#"><i class="uil-comments-alt"></i><span>23</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#"><i class="uil-bell"></i><span>98</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <i data-show="show-side-navigation1" class="uil-bars show-side-btn"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
+      <nav class="navbar navbar-expand-md">
+                    <div class="container-fluid mx-2">
+                        <div class="navbar-header">
+                            <ul class="navbar-nav">
+                                <li style={{ width: 190 }}>
+                                    <a class="nav-link" href="#" role="button" aria-expanded="false">
+                                        <img src={logo} alt='logo' style={{ width: 150 }} />
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <i data-show="show-side-navigation1" class="uil-sign-out-alt show-side-btn"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
 
         <div class="p-4">
           <div class="welcome">
@@ -71,7 +64,7 @@ const Dashboard = () => {
                 </Link>
               </div>
               <div class="col-lg-4">
-                <a href="#" class="linkstyle">
+                <Link to="/leave-dashboard" target="_blank" class="linkstyle">
                   <div class="box d-flex rounded-2 align-items-center mb-4 mb-lg-0 p-3">
                     <i class="uil-location-arrow fs-2 text-center bg-primary rounded-circle"></i>
                     <div class="ms-3">
@@ -80,7 +73,7 @@ const Dashboard = () => {
                       </div>
                     </div>
                   </div>
-                </a>
+                </Link>
               </div>
             </div>
           </section>

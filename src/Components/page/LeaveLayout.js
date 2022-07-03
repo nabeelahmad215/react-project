@@ -27,13 +27,8 @@ const LeaveLayout = () => {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="/leave-history" class="nav-link" role="button" aria-expanded="false">
-                                    Leave History
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/leave-type" class="nav-link" role="button" aria-expanded="false">
-                                        Leave Type
+                                    <Link to="/approval-log" class="nav-link" role="button" aria-expanded="false">
+                                    Approval Log
                                     </Link>
                                 </li>
                             </ul>

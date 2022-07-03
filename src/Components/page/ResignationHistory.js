@@ -89,11 +89,12 @@ const ResignationHistory = () => {
                                                         <td>{row.emp_code}</td>
                                                         <td>{row.resignation_date}</td>
                                                         <td>{row.notice_date}</td>
-                                                        <td><select value={row.status} onChange={(e) => (setStatus(e.target.value))}>
-                                                            <option></option>
-                                                            <option>Active</option>
-                                                            <option>Inactive</option>
-                                                        </select></td>
+                                                        <td>
+                                                            <select value={row.status} onChange={(e) => (setStatus(e.target.value))}>
+                                                                <option></option>
+                                                                <option>Active</option>
+                                                                <option>Inactive</option>
+                                                            </select></td>
                                                         <td>
                                                             <Link to={`/edit-resign/${row.id}`}><i className="uil-pen del-btn"></i></Link> | <i className="uil-check del-btn" onClick={() => handleUpdate(row.id)}></i> | <i className="uil-trash-alt del-btn" onClick={() => deleteEmp(row.id)}></i>
                                                         </td>
