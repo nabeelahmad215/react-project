@@ -67,8 +67,7 @@ const Resignation = () => {
                                         <td>
                                             <select className='mytdinput' name='emp_id' onChange={(e) => (setEmp_id(e.target.value))}>
                                                 <option>---Select Any Value---</option>
-                                                {
-                                                    
+                                                {  
                                                     email.map((getemail, index) => (
                                                         <option key={index} value={getemail.id}>[{getemail.emp_code}] ~ {getemail.name}</option>
                                                     ))

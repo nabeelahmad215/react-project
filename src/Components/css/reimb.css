@@ -151,3 +151,15 @@
 	background-color: red;
 	color: white;
 }
+
+@media print{
+	body *{
+		visibility: hidden;
+	}
+	#print-section{
+		visibility: visible;
+		position: absolute;
+		margin-left: -100px;
+		top: 0px;
+	}
+}

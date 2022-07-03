@@ -6,6 +6,7 @@ import ApprovalLogPending from './Components/page/ApprovalLogPending';
 import ApprovalLogReject from './Components/page/ApprovalLogReject';
 import Dashboard from './Components/page/Dashboard';
 import EditInformation from './Components/page/EditInformation';
+import EditReimburstment from './Components/page/EditReimburstment';
 import EmployeeLayout from './Components/page/EmployeeLayout';
 import InfoHistory from './Components/page/InfoHistory';
 import Information from './Components/page/Information';
@@ -17,6 +18,7 @@ import PayrollLayout from './Components/page/PayrollLayout';
 import Promotion from './Components/page/Promotion';
 import PromotionHistory from './Components/page/PromotionHistory';
 import Reimburstment from './Components/page/Reimburstment';
+import ReimburstmentHistory from './Components/page/ReimburstmentHistory';
 import Resignation from './Components/page/Resignation';
 import ResignationHistory from './Components/page/ResignationHistory';
 import ResignEdit from './Components/page/ResignEdit';
@@ -45,6 +47,9 @@ const App = () => {
       <Route path='/salary-sheet' element={<Salary />} />
       <Route path='/payroll' element={<Payroll />} />
       <Route path='/reimburstment' element={<Reimburstment />} />
+      <Route path='/reimburstment-history' element={<ReimburstmentHistory />} />
+      <Route path='/demo-reimburs-history' element={<Navigate to='/reimburstment-history' />} />
+      <Route path='/edit-reimburstment/:id' element={<EditReimburstment />} />
       <Route path='/leave-dashboard' element={<LeaveLayout />} />
       <Route path='/leave-request' element={<Leave />} />
       <Route path='/approval-log' element={<ApprovalLog />} />
@@ -53,6 +58,7 @@ const App = () => {
       <Route path='/approval-log/reject' element={<ApprovalLogReject />} />
       <Route path='/demo-leave-all' element={<Navigate to='/approval-log' />} />
       <Route path='/user-list' element={<UserList />} />
+
     </Routes>
   );
 }

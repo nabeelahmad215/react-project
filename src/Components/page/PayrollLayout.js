@@ -51,12 +51,6 @@ const PayrollLayout = () => {
                         </div>
                     </div>
                 </nav>
-
-
-                <div class="myfooter">
-                    <button class="button button2">SAVE</button>
-                    <button class="button button1">HISTORY</button>
-                </div>
             </div>
         </>
     )
