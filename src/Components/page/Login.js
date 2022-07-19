@@ -1,5 +1,5 @@
-import '../css/login.css'
-import { useEffect, useState } from 'react';
+import '../css/login.css';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PostCall } from './PostCall';
 
@@ -7,24 +7,30 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const nav = useNavigate();
-    const handleSubmit =(e)=>{
+    const handleSubmit = (e) => {
         e.preventDefault();
-        PostCall('reactlogin',{email:email,password:password}, function(result){
+        PostCall('reactlogin', { email: email, password: password }, function (result) {
             console.log(result);
             nav("/");
         });
     }
     return (
         <>
-            <div class="login">
-                <h1>Login</h1>
-                <form onSubmit={handleSubmit}>
-                    <input type="email" name="email" placeholder="Email" required="required" value={email}
-                    onChange={(e)=>(setEmail(e.target.value))}/>
-                    <input type="password" name="password" placeholder="Password" required="required" value={password}
-                    onChange={(e)=>(setPassword(e.target.value))}/>
-                    <button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>
-                </form>
+         <div className='main'>
+            <form onSubmit={handleSubmit}>
+            <h1 className='h1'>Login</h1>
+                    <div className="inputBox">
+                        <input type="email" name="email" required="required" onChange={(e) => (setEmail(e.target.value))} />
+                        <span>Email</span>
+                    </div>
+                    <div className="inputBox">
+                        <input type="password" name="password" required="required" onChange={(e) => (setPassword(e.target.value))} />
+                        <span>Password</span>
+                    </div>
+                    <div className="btn">
+                        <input type="submit" />
+                    </div>
+            </form>
             </div>
         </>
     );

@@ -1,9 +1,8 @@
-
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { PostCall } from './PostCall';
 import Swal from 'sweetalert';
-import '../css/inform.css';
+import '../css/login.css';
 
 function Signup() {
     const [email, setEmail] = useState("");
@@ -67,20 +66,36 @@ function Signup() {
 
     return (
         <>
-            <div className="login">
-                <h1>Login</h1>
+            <div className="main">
                 <form onSubmit={handleSubmit}>
-                    <input type="text" name="company" placeholder="Company Name" />
-                    <input type="text" name="mobile" placeholder="03001234567" />
-                    <input type="text" name="cnic" placeholder="CNIC (without dashes)" />
-                    <input type="email" name="email" placeholder="Email" required="required" value={email}
-                        onChange={userHandler} /><br />
-                    {emailErr ? <span className='error'>User Not Valid</span> : ""}<br/>
-                    <input type="password" name="password" placeholder="Password" required="required" value={password}
-                        onChange={passwordHandler} />{passwordErr ? <span>Password Not Valid</span> : ""}
-                    <button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>
+                    <h1 className='h1'>Signup</h1>
+                    <div className="inputBox">
+                        <input type="text" name="company" required="required" />
+                        <span>Company</span>
+                    </div>
+                    <div className="inputBox">
+                        <input type="text" name="mobile" required="required" />
+                        <span>Contact Number</span>
+                    </div>
+                    <div className="inputBox">
+                        <input type="text" name="cnic" required="required" />
+                        <span>CNIC (without dashes)</span>
+                    </div>
+                    <div className="inputBox">
+                        <input type="email" name="email" required="required"
+                            onChange={userHandler} />
+                        <span>Email</span>
+                    </div>
+
+                    <div className="inputBox">
+                        <input type="password" name="password" required="required"
+                            onChange={passwordHandler} />
+                        <span>Password</span>
+                    </div>
+                    <div className="btn">
+                        <input type="submit" />
+                    </div>
                 </form>
-                {/* <button type="submit" onClick={popup} class="btn btn-primary btn-block btn-large">Let me in.</button> */}
             </div>
         </>
     );
